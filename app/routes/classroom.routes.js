@@ -3,11 +3,10 @@ module.exports = app => {
 
   const baseURL = "/api/classroom";
 
-  // Create a new videos
-  app.post(baseURL+"/videos", videos.create);
-
   // Retrieve all videos
   app.get(baseURL+"/videos", videos.findAll);
+
+  app.get(baseURL+"/videos/addVideo", videos.create);
 
   app.get(baseURL+"/videos/grades", videos.findAllGrades);
 
