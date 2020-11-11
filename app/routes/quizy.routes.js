@@ -3,7 +3,10 @@ module.exports = app => {
   
   const baseURL = "/api/quizy";
 
-   // Retrieve a single quize with videosid
+    // Posts
+  app.post(baseURL+"/quizes/addQuiz", quiz.create);
+    
+   // Gets
    app.get(baseURL+"/setup/:amount/:category/:difficulty/:type", quiz.findAll);
 
 };
