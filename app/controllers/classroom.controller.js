@@ -16,7 +16,7 @@ function getYouTubeId(url){
 
 // Create and Save a new video
 exports.create = (req, res) => {
-  // Validate request
+
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
