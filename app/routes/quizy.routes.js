@@ -9,4 +9,8 @@ module.exports = app => {
    // Gets
    app.get(baseURL+"/setup/:amount/:category/:difficulty/:type", quiz.findAll);
 
+  app.get(baseURL+"/quizes/categories", quiz.findAllCategories);
+
+  app.get(baseURL+"/quizes/types", quiz.findAllTypes);
+
 };

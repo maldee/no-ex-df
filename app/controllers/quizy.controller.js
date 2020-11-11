@@ -144,3 +144,57 @@ exports.deleteAll = (req, res) => {
     else res.send({ message: `All Quizes were deleted successfully!` });
   });
 };
+
+exports.findAllCategories = (req, res) => {
+  Quiz.getAllCategories((err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    }else{ 
+      var objectArray=[];
+      var totalItemCount=data.length;
+
+      for (var i in data) {
+        var d = data[i];
+        
+        var results = {
+          id : d.id,
+          category : d.category,
+      };
+        objectArray.push(results);
+    }
+    res.send({count: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
+exports.findAllTypes = (req, res) => {
+  Quiz.getAllTypes((err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    }else{ 
+      var objectArray=[];
+      var totalItemCount=data.length;
+
+      for (var i in data) {
+        var d = data[i];
+        
+        var results = {
+          id : d.id,
+          type : d.type,
+      };
+        objectArray.push(results);
+    }
+    res.send({count: totalItemCount, results: objectArray });
+    
+    };
+  });
+};

@@ -78,6 +78,32 @@ Quiz.getAll = result => {
   });
 };
 
+Quiz.getAllCategories = result => {
+  sql.query("SELECT * FROM quizy_quiz_category", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("quizes: ", res);
+    result(null, res);
+  });
+};
+
+Quiz.getAllTypes = result => {
+  sql.query("SELECT * FROM quizy_quiz_type", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("quizes: ", res);
+    result(null, res);
+  });
+};
+
 Quiz.updateById = (id, quiz, result) => {
   sql.query(
     "UPDATE quizy_quiz SET category = ?, type = ?, question = ?,correct_answer = ?,incorrect_answers = ? WHERE id = ?",
