@@ -88,7 +88,7 @@ exports.findByGradeSubjectPage = (req, res) => {
       var totalItemCount=data.length;
       var page= parseInt(req.params.page);
      
-      var totalPages=Math.ceil(totalCount/itemPerPage)
+      var tPages=Math.ceil(totalCount/itemPerPage);
       
       
      var youtubeVideoId=getYouTubeId(d.link);
@@ -104,7 +104,7 @@ exports.findByGradeSubjectPage = (req, res) => {
     };
       objectArray.push(results);
   }
-    res.send({totalPages: totalPages,count: totalItemCount,page: page, results: objectArray });
+    res.send({totalPages: tPages,count: totalItemCount,page: page, results: objectArray });
    }
   });
 };
