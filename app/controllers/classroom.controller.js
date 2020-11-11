@@ -207,6 +207,85 @@ exports.findAll = (req, res) => {
 };
 
 
+exports.findAllGrades = (req, res) => {
+  Video.getAllGrades((err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    }else{ 
+      var objectArray=[];
+      var totalItemCount=data.length;
+
+      for (var i in data) {
+        var d = data[i];
+        
+        var results = {
+          id : d.id,
+          grade : d.grade,
+      };
+        objectArray.push(results);
+    }
+    res.send({count: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
+exports.findAllSubjects = (req, res) => {
+  Video.getAllSubjects((err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    }else{ 
+      var objectArray=[];
+      var totalItemCount=data.length;
+      for (var i in data) {
+        var d = data[i];
+        
+        var results = {
+          id : d.id,
+          subject : d.subject,
+      };
+        objectArray.push(results);
+    }
+    res.send({count: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
+exports.findAllTeachers = (req, res) => {
+  Video.getAllTeachers((err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    }else{ 
+      var objectArray=[];
+      var totalItemCount=data.length;
+      for (var i in data) {
+        var d = data[i];
+        
+        var results = {
+          id : d.id,
+          teacher : d.teacher,
+      };
+        objectArray.push(results);
+    }
+    res.send({count: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
 
 
 

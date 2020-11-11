@@ -107,6 +107,45 @@ Video.getAll = result => {
   });
 };
 
+Video.getAllGrades = result => {
+  sql.query("SELECT * FROM classroom_video_grade", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("videos: ", res);
+    result(null, res);
+  });
+};
+
+Video.getAllSubjects = result => {
+  sql.query("SELECT * FROM classroom_video_subject", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("videos: ", res);
+    result(null, res);
+  });
+};
+
+Video.getAllTeachers = result => {
+  sql.query("SELECT * FROM classroom_video_teacher", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("videos: ", res);
+    result(null, res);
+  });
+};
+
 Video.getCount = (grade,subject, result) =>{
   sql.query(`SELECT * FROM classroom_video WHERE grade = '${grade}' and subject = '${subject}'`, (err, res) => {
     if (err) {
