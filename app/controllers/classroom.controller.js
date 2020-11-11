@@ -185,7 +185,7 @@ exports.findAll = (req, res) => {
         var itemPerPage = 5;
         var totalItemCount=data.length;
         var page= Math.floor((totalItemCount + itemPerPage - 1) / itemPerPage);
-        
+        var youtubeVideoId=getYouTubeId(d.link);
       
       
       
@@ -196,7 +196,7 @@ exports.findAll = (req, res) => {
           grade : d.grade,
           subject: d.subject,
           teacher: d.teacher,
-          link: d.link,
+          link: youtubeVideoId,
       };
         objectArray.push(results);
     }
