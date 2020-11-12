@@ -1,6 +1,6 @@
 const Category = require("../models/blog/category.model.js");
 const Post = require("../models/blog/post.model.js");
-const User = require("../models/blog/user.model.js");
+const Author = require("../models/blog/author.model.js");
 
 const baseURL = "/api/blog";
 
@@ -159,8 +159,8 @@ exports.findAllPosts = (req, res) => {
   });
 };
 
-exports.findAllUsers = (req, res) => {
-  User.getAllUsers((err, data) => {
+exports.findAllAuthors = (req, res) => {
+  Author.getAllAuthors((err, data) => {
 
     if (err){
       res.status(500).send({
