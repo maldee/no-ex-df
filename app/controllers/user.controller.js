@@ -86,7 +86,6 @@ exports.signUp = (req, res) => {
   }
 
   const user = new User({
-    
     email : req.body.email,
     password :req.body.password,
     displayName :req.body.displayName,
@@ -103,6 +102,9 @@ exports.signUp = (req, res) => {
         message:
           err.message || "User registration failed"
       });
+
+      
+
     else res.send(data);
   });
 };
