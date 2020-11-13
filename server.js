@@ -23,13 +23,15 @@ app.use(express.urlencoded({ extended: true }));
 // for parsing multipart/form-data
 app.use(upload.array()); 
 app.use(express.static('public'));
-
+const errorHandler = require('./app/helper/error-handler');
+app.use(errorHandler);
 
 // simple route
 app.get("/api", (req, res) => {
   res.json({ message: "Welcome to deeflow" });
 });
 
+require("./app/routes/user.routes.js")(app);
 require("./app/routes/chatbits.routes.js")(app);
 require("./app/routes/classroom.routes.js")(app);
 require("./app/routes/blog.routes.js")(app);
