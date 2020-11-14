@@ -4,7 +4,7 @@ module.exports = app => {
   const baseURL = "/api/chatbits";
 
    // Posts
-   app.post(baseURL+"/phrases/addPhrase", chatbits.create);
+  app.post(baseURL+"/phrases/addPhrase", chatbits.create);
 
   app.get(baseURL+"/categories", chatbits.findAllCategories);
   app.get(baseURL+"/posts", chatbits.findAllPosts);
