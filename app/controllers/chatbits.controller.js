@@ -34,6 +34,38 @@ exports.findAllCategories = (req, res) => {
   });
 };
 
+exports.create = (req, res) => {
+
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  // Create a Video
+  const phrase = new ChatBits_Post({
+    id: req.body.id,
+    english_phrase: req.body.english_phrase,
+    sinhala_phrase: req.body.sinhala_phrase,
+    singlish_phrase: req.body.singlish_phrase,
+    note: req.body.note,
+    categories: req.body.categories,
+    situations: req.body.situations,
+ 
+  });
+
+  // Save Customer in the database
+  ChatBits_Post.create(phrase, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Videos."
+      });
+    else res.send(data);
+  });
+};
+
+
 exports.findAllPosts = (req, res) => {
   ChatBits_Post.getAll((err, data) => {
 

@@ -11,6 +11,19 @@ const ChatBits_Post = function(post) {
   this.situation = post.situation;
 };
 
+ChatBits_Post.create = (newPhrase, result) => {
+	
+  sql.query("INSERT INTO chatbits_post SET ?", newPhrase, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created phrase: ", { id: res.insertId, ...newPhrase });
+    result(null, { id: res.insertId, ...newPhrase });
+  });
+};
 
 ChatBits_Post.getAll = result => {
   sql.query("SELECT * FROM chatbits_post", (err, res) => {
