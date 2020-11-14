@@ -74,7 +74,7 @@ Post.getBySlug = (slug, result) => {
 
 Post.getByCategory = (category, result) => {
 	
-  sql.query(`SELECT * FROM blog_post WHERE category_name = '${category}'`, (err, res) => {
+  sql.query(`SELECT * FROM blog_post WHERE category_english_name = '${category}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
