@@ -7,9 +7,9 @@ module.exports = app => {
   app.post(baseURL+"/phrases/addPhrase", chatbits.create);
 
   app.get(baseURL+"/categories", chatbits.findAllCategories);
-  app.get(baseURL+"/posts", chatbits.findAllPosts);
+  app.get(baseURL+"/phrases", chatbits.findAllPosts);
   app.get(baseURL+"/situations", chatbits.findAllSituations);
-  app.get(baseURL+"/posts/:searched", chatbits.findByEnglishPhrase);
+  app.get(baseURL+"/phrases/:searched", chatbits.findByEnglishPhrase);
 
   
 };
