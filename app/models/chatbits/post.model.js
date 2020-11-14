@@ -8,7 +8,7 @@ const ChatBits_Post = function(post) {
   this.singlish_phrase = post.singlish_phrase;
   this.note = post.note;
   this.categories = post.categories;
-  this.situation = post.situation;
+  this.situations = post.situations;
 };
 
 ChatBits_Post.create = (newPhrase, result) => {
