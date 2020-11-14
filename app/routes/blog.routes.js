@@ -12,6 +12,8 @@ module.exports = app => {
   app.get(baseURL+"/posts/mostPopular", blog.findLatestPosts);
   app.get(baseURL+"/posts/:slug", blog.findBySlug);
   app.get(baseURL+"/posts/q/:q", blog.searchPost);
+  app.get(baseURL+"/posts/byCategory/list/:category", blog.findByCategory);
+
   app.get(baseURL+"/authors/", blog.findAllAuthors);
   
 

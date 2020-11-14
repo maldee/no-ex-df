@@ -72,6 +72,26 @@ Post.getBySlug = (slug, result) => {
   });
 };
 
+Post.getByCategory = (category, result) => {
+	
+  sql.query(`SELECT * FROM blog_post WHERE category_name = '${category}'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found video: ", res);
+      result(null, res);
+      return;
+    }
+
+    // not found Customer with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
 Post.searchPost = (searched, result) => {
 	sql.query(`SELECT * FROM blog_post WHERE slug LIKE '${searched}%' OR slug LIKE '%${searched}' OR slug LIKE '%${searched}%'`, (err, res) => {
     if (err) {
