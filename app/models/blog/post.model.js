@@ -72,6 +72,25 @@ Post.getBySlug = (slug, result) => {
   });
 };
 
+Post.searchPost = (searched, result) => {
+	sql.query(`SELECT * FROM blog_post WHERE slug LIKE '${searched}%' OR slug LIKE '%${searched}' OR slug LIKE '%${searched}%'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found video: ", res);
+      result(null, res);
+      return;
+    }
+
+    // not found Customer with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+
 Post.create = (post, result) => {
 	console.log("posttttttttt "+post.author);
   sql.query("INSERT INTO blog_post SET ?", post, (err, res) => {

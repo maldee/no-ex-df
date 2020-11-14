@@ -271,6 +271,46 @@ exports.findBySlug = (req, res) => {
   });
 };
 
+exports.searchPost = (req, res) => {
+  Post.searchPost(req.params.q,(err, data) => {
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving data."
+      });
+    }else{ 
+      var objectArray=[];
+      for (var i in data) {
+        var d = data[i];
+        
+        var totalItemCount=data.length;
+      
+        
+        var results = {
+          id : d.id,
+          author : d.author,
+          url : d.url,
+          title : d.title,
+          slug : d.slug,
+          image : d.image,
+          content : d.content,
+          read_time : d.read_time,
+          likes : d.likes,
+          category_name : d.category_name,
+          tags : d.tags,
+          publish : d.publish,
+          category_english_name : d.category_english_name,
+         
+      };
+        objectArray.push(results);
+    }
+    res.send({dataCount: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
 
 
 
