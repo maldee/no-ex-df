@@ -52,7 +52,7 @@ exports.findByGradeSubjectPage = (req, res) => {
   
   console.log("req ",req.params);
 
-  var totalCount=0;
+  var totalCount = 0;
 
   Video.getCount(req.params.grade,req.params.subject,(err, data) => {
     if (err){
@@ -64,49 +64,52 @@ exports.findByGradeSubjectPage = (req, res) => {
      
      
         totalCount=data.length;
+        getVideosByGradeSubject(totalCount);
       
       console.log("total Count is :::  ",totalCount);
     }
   });
 
   
-
-  Video.findByGradeSubjectPage(req.params.grade,req.params.subject,req.params.page,(err, data) => {
-   if (err){
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Video."
-      });
-   }else{
-    
-    var objectArray=[];
-
-    for (var i in data) {
-      var d = data[i];
-      
-      var itemPerPage = 10;
-      var totalItemCount=data.length;
-      var page= parseInt(req.params.page);
-     
-      var tPages=Math.ceil(totalCount/itemPerPage);
-      
-      
-     var youtubeVideoId=getYouTubeId(d.link);
-    
-      var results = {
-        id : d.id,
-        title : d.title,
-        description : d.description,
-        grade : d.grade,
-        subject: d.subject,
-        teacher: d.teacher,
-        link: youtubeVideoId,
-    };
-      objectArray.push(results);
+  function getVideosByGradeSubject(totalCount){
+    Video.findByGradeSubjectPage(req.params.grade,req.params.subject,req.params.page,(err, data) => {
+      if (err){
+         res.status(500).send({
+           message:
+             err.message || "Some error occurred while retrieving Video."
+         });
+      }else{
+       
+       var objectArray=[];
+   
+       for (var i in data) {
+         var d = data[i];
+         
+         var itemPerPage = 10;
+         var totalItemCount=data.length;
+         var page= parseInt(req.params.page);
+        
+         var tPages=Math.ceil(totalCount/itemPerPage);
+         
+         
+        var youtubeVideoId=getYouTubeId(d.link);
+       
+         var results = {
+           id : d.id,
+           title : d.title,
+           description : d.description,
+           grade : d.grade,
+           subject: d.subject,
+           teacher: d.teacher,
+           link: youtubeVideoId,
+       };
+         objectArray.push(results);
+     }
+       res.send({totalPages: tPages,count: totalItemCount,page: page, results: objectArray });
+      }
+     });
   }
-    res.send({totalPages: tPages,count: totalItemCount,page: page, results: objectArray });
-   }
-  });
+ 
 };
 
 exports.findByGradeSubject = (req, res) => {
