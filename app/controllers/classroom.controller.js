@@ -133,7 +133,7 @@ exports.findByGradeSubject = (req, res) => {
     
       var totalItemCount=data.length;
       var youtubeVideoId=getYouTubeId(d.link);
-	  var url= "http://www.youtube.com/embed/"+youtubeVideoId+"?html5=1";
+	  var url= "https://www.youtube.com/embed/"+youtubeVideoId+"?html5=1";
     
       var results = {
         id : d.id,
