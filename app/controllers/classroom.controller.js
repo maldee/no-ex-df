@@ -63,9 +63,9 @@ exports.findByGradeSubjectCount = (req, res) => {
      
      
         totalCount=data.length;
-        getVideosByGradeSubject(totalCount);
       
       console.log("total Count is :::  ",totalCount);
+      res.send({totalCount: totalCount});
     }
   });
 };
@@ -86,10 +86,10 @@ exports.findByGradeSubjectPage = (req, res) => {
      
      
         totalCount=data.length;
-       
+        getVideosByGradeSubject(totalCount);
       
       console.log("total Count is :::  ",totalCount);
-      res.send({totalCount: totalCount});
+    
     }
   });
 
