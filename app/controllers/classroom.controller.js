@@ -51,7 +51,7 @@ exports.create = (req, res) => {
 exports.findByGradeSubjectCount = (req, res) => {
   console.log("req ",req.params);
 
-  var totalCount = 0;
+  var totalCounts = 0;
 
   Video.getCount(req.params.grade,req.params.subject,(err, data) => {
     if (err){
@@ -62,10 +62,10 @@ exports.findByGradeSubjectCount = (req, res) => {
     }else{
      
      
-        totalCount=data.length;
+        totalCounts=data.length;
       
-      console.log("total Count is :::  ",totalCount);
-      res.send({totalCount: totalCount});
+      console.log("total Count is :::  ",totalCounts);
+      res.send({totalCount: totalCounts});
     }
   });
 };

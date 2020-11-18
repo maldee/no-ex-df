@@ -21,7 +21,7 @@ module.exports = app => {
   // Retrieve a single quize with videosid
   app.get(baseURL+"/videos/:grade/:subject/:page", videos.findByGradeSubjectPage);
 
-  app.get(baseURL+"/videos/count/:grade/:subject", videos.findByGradeSubjectCount);
+  app.get(baseURL+"/count/:grade/:subject", videos.findByGradeSubjectCount);
 
    // Retrieve a single quize with videosid
    app.get(baseURL+"/videos/:grade/:subject", videos.findByGradeSubject);
