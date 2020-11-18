@@ -48,6 +48,28 @@ exports.create = (req, res) => {
 
 // Retrieve all Customers from the database.
 
+exports.findByGradeSubjectCount = (req, res) => {
+  console.log("req ",req.params);
+
+  var totalCount = 0;
+
+  Video.getCount(req.params.grade,req.params.subject,(err, data) => {
+    if (err){
+       res.status(500).send({
+         message:
+           err.message || "Some error occurred while retrieving Video."
+       });
+    }else{
+     
+     
+        totalCount=data.length;
+        getVideosByGradeSubject(totalCount);
+      
+      console.log("total Count is :::  ",totalCount);
+    }
+  });
+};
+
 exports.findByGradeSubjectPage = (req, res) => {
   
   console.log("req ",req.params);
