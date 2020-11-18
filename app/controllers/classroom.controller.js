@@ -93,6 +93,7 @@ exports.findByGradeSubjectPage = (req, res) => {
          
          
         var youtubeVideoId=getYouTubeId(d.link);
+		var url= "https://www.youtube.com/embed/"+youtubeVideoId+"?html5=1";
        
          var results = {
            id : d.id,
@@ -101,7 +102,7 @@ exports.findByGradeSubjectPage = (req, res) => {
            grade : d.grade,
            subject: d.subject,
            teacher: d.teacher,
-           link: youtubeVideoId,
+           link: url,
        };
          objectArray.push(results);
      }
@@ -123,6 +124,7 @@ exports.findByGradeSubject = (req, res) => {
         message:
           err.message || "Some error occurred while retrieving Video."
       });
+      
    }else{
     
     var objectArray=[];
