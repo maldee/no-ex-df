@@ -89,6 +89,7 @@ exports.findByGradeSubjectPage = (req, res) => {
         getVideosByGradeSubject(totalCount);
       
       console.log("total Count is :::  ",totalCount);
+      res.send({totalCount: totalCount});
     }
   });
 
