@@ -106,7 +106,7 @@ exports.findByGradeSubjectPage = (req, res) => {
        };
          objectArray.push(results);
      }
-       res.send({totalPages: tPages,count: totalItemCount,page: page, results: objectArray });
+       res.send({totalPages: tPages,totalCount: totalCount,pageCount: totalItemCount,page: page, results: objectArray });
       }
      });
   }
