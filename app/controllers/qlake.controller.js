@@ -22,17 +22,16 @@ exports.create = (req, res) => {
   const post = new Question({
     id : req.body.id,
     author : req.body.author,
-    url : url,
-    title : req.body.title,
+    question : req.body.question,
     slug : req.body.slug,
-    image : req.body.image,
     content : req.body.content,
-    read_time : req.body.read_time,
-    likes : req.body.likes,
     category_name : req.body.category_name,
-    tags : req.body.tags,
-    publish : req.body.publish,
     category_english_name : req.body.category_english_name,
+    tags : req.body.tags,
+    asked : req.body.asked,
+    views : req.body.views,
+    status : req.body.status,
+
   });
 
   // Save Customer in the database
@@ -127,17 +126,15 @@ exports.findAllPosts = (req, res) => {
         var results = {
           id : d.id,
           author : d.author,
-          url : d.url,
-          title : d.title,
+          question : d.question,
           slug : d.slug,
-          image : d.image,
           content : d.content,
-          read_time : d.read_time,
-          likes : d.likes,
           category_name : d.category_name,
-          tags : d.tags,
-          publish : d.publish,
           category_english_name : d.category_english_name,
+          tags : d.tags,
+          asked : d.asked,
+          views : d.views, 
+          status: d.status,
          
       };
         objectArray.push(results);
@@ -199,17 +196,15 @@ exports.findLatestPosts = (req, res) => {
         var results = {
           id : d.id,
           author : d.author,
-          url : d.url,
-          title : d.title,
+          question : d.question,
           slug : d.slug,
-          image : d.image,
           content : d.content,
-          read_time : d.read_time,
-          likes : d.likes,
           category_name : d.category_name,
-          tags : d.tags,
-          publish : d.publish,
           category_english_name : d.category_english_name,
+          tags : d.tags,
+          asked : d.asked,
+          views : d.views, 
+          status: d.status,
          
       };
         objectArray.push(results);
@@ -239,17 +234,15 @@ exports.findById = (req, res) => {
         var results = {
           id : d.id,
           author : d.author,
-          url : d.url,
-          title : d.title,
+          question : d.question,
           slug : d.slug,
-          image : d.image,
           content : d.content,
-          read_time : d.read_time,
-          likes : d.likes,
           category_name : d.category_name,
-          tags : d.tags,
-          publish : d.publish,
           category_english_name : d.category_english_name,
+          tags : d.tags,
+          asked : d.asked,
+          views : d.views, 
+          status: d.status,
          
       };
         objectArray.push(results);
@@ -279,17 +272,15 @@ exports.findByCategory = (req, res) => {
         var results = {
           id : d.id,
           author : d.author,
-          url : d.url,
-          title : d.title,
+          question : d.question,
           slug : d.slug,
-          image : d.image,
           content : d.content,
-          read_time : d.read_time,
-          likes : d.likes,
           category_name : d.category_name,
-          tags : d.tags,
-          publish : d.publish,
           category_english_name : d.category_english_name,
+          tags : d.tags,
+          asked : d.asked,
+          views : d.views, 
+          status: d.status,
          
       };
         objectArray.push(results);
@@ -319,17 +310,15 @@ exports.searchPost = (req, res) => {
         var results = {
           id : d.id,
           author : d.author,
-          url : d.url,
-          title : d.title,
+          question : d.question,
           slug : d.slug,
-          image : d.image,
           content : d.content,
-          read_time : d.read_time,
-          likes : d.likes,
           category_name : d.category_name,
-          tags : d.tags,
-          publish : d.publish,
           category_english_name : d.category_english_name,
+          tags : d.tags,
+          asked : d.asked,
+          views : d.views, 
+          status: d.status,
          
       };
         objectArray.push(results);

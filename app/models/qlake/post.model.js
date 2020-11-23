@@ -4,17 +4,15 @@ const sql = require("../db.js");
 const Post = function(post) {
   this.id = post.id;
   this.author = post.author;
-  this.url = post.url;
-  this.title = post.title;
+  this.question = post.question;
   this.slug = post.slug;
-  this.image = post.image;
   this.content = post.content;
-  this.read_time = post.read_time;
-  this.likes = post.likes;
   this.category_name = post.category_name;
-  this.tags = post.tags;
-  this.publish = post.publish;
   this.category_english_name = post.category_english_name;
+  this.tags = post.tags;
+  this.asked = post.asked;
+  this.views = post.views;
+  this.status = post.status;
   
 };
 
