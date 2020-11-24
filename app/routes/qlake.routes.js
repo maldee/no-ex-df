@@ -10,7 +10,7 @@ module.exports = app => {
   app.get(baseURL+"/questions", qlake.findAllPosts);
   
   app.get(baseURL+"/questions/mostPopular", qlake.findLatestPosts);
-  app.get(baseURL+"/questions/:id", qlake.findById);
+  app.get(baseURL+"/questions/:qid", qlake.findById);
   app.get(baseURL+"/questions/q/:q", qlake.searchPost);
   app.get(baseURL+"/questions/byCategory/list/:category", qlake.findByCategory);
 

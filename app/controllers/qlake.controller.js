@@ -20,7 +20,7 @@ exports.create = (req, res) => {
 
   // Create a Video
   const post = new Question({
-    id : req.body.id,
+    qid : req.body.qid,
     author : req.body.author,
     question : req.body.question,
     slug : req.body.slug,
@@ -58,7 +58,7 @@ exports.createCategory = (req, res) => {
 
   // Create a Video
   const category = new QuestionCategory({
-    id : req.body.id,
+    qid : req.body.qid,
     category_name : req.body.category_name,
     category_image : req.body.category_image,
     category_english_name : req.body.category_english_name,
@@ -124,7 +124,7 @@ exports.findAllPosts = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           author : d.author,
           question : d.question,
           slug : d.slug,
@@ -162,7 +162,7 @@ exports.findAllAuthors = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           username : d.username,
           email : d.email,
           password : d.password,
@@ -194,7 +194,7 @@ exports.findLatestPosts = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           author : d.author,
           question : d.question,
           slug : d.slug,
@@ -216,7 +216,7 @@ exports.findLatestPosts = (req, res) => {
 };
 
 exports.findById = (req, res) => {
-  Question.getById(req.params.id,(err, data) => {
+  Question.getById(req.params.qid,(err, data) => {
 
     if (err){
       res.status(500).send({
@@ -232,7 +232,7 @@ exports.findById = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           author : d.author,
           question : d.question,
           slug : d.slug,
@@ -270,7 +270,7 @@ exports.findByCategory = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           author : d.author,
           question : d.question,
           slug : d.slug,
@@ -308,7 +308,7 @@ exports.searchPost = (req, res) => {
       
         
         var results = {
-          id : d.id,
+          qid : d.qid,
           author : d.author,
           question : d.question,
           slug : d.slug,

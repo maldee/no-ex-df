@@ -2,7 +2,7 @@ const sql = require("../db.js");
 
 // constructor
 const Post = function(post) {
-  this.id = post.id;
+  this.qid = post.qid;
   this.author = post.author;
   this.question = post.question;
   this.slug = post.slug;
@@ -70,9 +70,9 @@ Post.getBySlug = (slug, result) => {
   });
 };
 
-Post.getById = (id, result) => {
+Post.getById = (qid, result) => {
 	
-  sql.query(`SELECT * FROM qlake_post WHERE id = '${id}'`, (err, res) => {
+  sql.query(`SELECT * FROM qlake_post WHERE qid = '${qid}'`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
