@@ -59,6 +59,12 @@ Answer.getAllAnswersById = (qid, result) => {
       return;
     }
 
+    if(res.length==0){
+      console.log("found video: ", res);
+      result(null, res);
+      return;
+    }
+
     // not found Customer with the id
     result({ kind: "not_found" }, null);
   });
