@@ -7,8 +7,11 @@ module.exports = app => {
   app.post(baseURL+"/addQuestion", qlake.create);
   app.post(baseURL+"/addAnswer", qlake.addAnswer);
   app.post(baseURL+"/addCategory", qlake.createCategory);
+
+
   app.get(baseURL+"/categories", qlake.findAllCategories);
   app.get(baseURL+"/questions", qlake.findAllPosts);
+  app.get(baseURL+"/answers/:qid", qlake.findAllAnswers);
   
   app.get(baseURL+"/questions/mostPopular", qlake.findLatestPosts);
   app.get(baseURL+"/questions/:qid", qlake.findById);

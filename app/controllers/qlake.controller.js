@@ -140,6 +140,39 @@ exports.findAllCategories = (req, res) => {
   });
 };
 
+exports.findAllAnswers = (req, res) => {
+  console.log("hello anse")
+    Answer.getAllAnswersById(req.params.qid,(err, data) => {
+
+
+    if (err){
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving data."
+      });
+    }else{ 
+      var objectArray=[];
+      for (var i in data) {
+        var d = data[i];
+        
+        var totalItemCount=data.length;
+      
+        
+        var results = {
+          id : d.id,
+          qid : d.qid,
+          author : d.author,
+          answer : d.answer,
+         
+      };
+        objectArray.push(results);
+    }
+    res.send({dataCount: totalItemCount, results: objectArray });
+    
+    };
+  });
+};
+
 exports.findAllPosts = (req, res) => {
   Question.getAll((err, data) => {
 

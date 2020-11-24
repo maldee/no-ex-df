@@ -44,6 +44,25 @@ Answer.getById = (qid, result) => {
   });
 };
 
+Answer.getAllAnswersById = (qid, result) => {
+	
+  sql.query(`SELECT * FROM qlake_answer WHERE qid = '${qid}'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found video: ", res);
+      result(null, res);
+      return;
+    }
+
+    // not found Customer with the id
+    result({ kind: "not_found" }, null);
+  });
+};
 
 
 Answer.searchPost = (searched, result) => {
