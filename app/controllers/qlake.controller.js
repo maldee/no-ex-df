@@ -1,5 +1,6 @@
 const QuestionCategory = require("../models/qlake/category.model.js");
 const Question = require("../models/qlake/post.model.js");
+const Answer = require("../models/qlake/answer.model.js");
 const Author = require("../models/qlake/author.model.js");
 
 const baseURL = "/api/qlake";
@@ -18,7 +19,7 @@ exports.create = (req, res) => {
   console.log("kimba "+req.body.title);
     var url=baseURL+"/question/"+req.body.slug;
 
-  // Create a Video
+  // Create a Question
   const post = new Question({
     qid : req.body.qid,
     author : req.body.author,
@@ -74,6 +75,38 @@ exports.createCategory = (req, res) => {
     else res.send(data);
   });
 };
+
+exports.addAnswer = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  console.log("kimba "+req.body.title);
+    var url=baseURL+"/question/"+req.body.slug;
+
+  // Create a Question
+  const post = new Answer({
+    id : req.body.id,
+    qid : req.body.qid,
+    author : req.body.author,
+    answer : req.body.answer,
+
+  });
+
+  // Save Customer in the database
+  Answer.create(post, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Post."
+      });
+    else res.send(data);
+  });
+};
+
 
 // Retrieve all 
 exports.findAllCategories = (req, res) => {
