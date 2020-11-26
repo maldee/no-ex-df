@@ -37,6 +37,7 @@ require("./app/routes/classroom.routes.js")(app);
 require("./app/routes/blog.routes.js")(app);
 require("./app/routes/quizy.routes.js")(app);
 require("./app/routes/qlake.routes.js")(app);
+require("./app/routes/cloudy.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5432;
